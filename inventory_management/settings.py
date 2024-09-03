@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken', # Install to use simple Token Authentication.
     'corsheaders', # Install django corsheaders using pip and add here check below CORS_ALLOWED_ORIGINS
     'inventory'
 ]

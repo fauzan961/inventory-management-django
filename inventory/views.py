@@ -5,10 +5,14 @@ from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 from .models import Product
 from .serializers import ProductSerializer
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     @action(detail=False, methods=['patch'], url_path='remove-quantity/(?P<product_id>\d+)')
     def remove_quantity(self, request, product_id=None):
